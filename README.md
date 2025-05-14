@@ -1,6 +1,6 @@
 # Template for Linux Desktop Apps on Binder / JupyterHub
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/EPFL-Center-for-Imaging/fiji-binderhub/HEAD?urlpath=desktop)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/EPFL-Center-for-Imaging/fiji-binderhub/HEAD)
 
 Generate a Git repository that can run any Linux GUI application in
 the browser via [mybinder.org](https://mybinder.org) or any JupyterHub
