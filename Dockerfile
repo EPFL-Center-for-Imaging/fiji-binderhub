@@ -51,7 +51,8 @@ RUN curl -sSfL https://sourceforge.net/projects/tigervnc/files/stable/1.10.1/tig
 RUN curl -sSfL https://github.com/novnc/noVNC/archive/v1.1.0.tar.gz | tar xvz -C /opt/ && \
     chmod a+rX -R /opt/noVNC-1.1.0
 
-RUN wget -O /home/$NB_USER/.jupyter/jupyter_notebook_config.py "https://gitlab.com/epfl-center-for-imaging/jupyterhub-imaging/-/raw/main/jupyterhub-imaging/spawn-images/jupyter_notebook_config.py"
+COPY jupyter_notebook_config.py /home/$NB_USER/.jupyter/jupyter_notebook_config.py
+# RUN wget -O /home/$NB_USER/.jupyter/jupyter_notebook_config.py "https://gitlab.com/epfl-center-for-imaging/jupyterhub-imaging/-/raw/main/jupyterhub-imaging/spawn-images/jupyter_notebook_config.py"
 RUN wget -O /opt/noVNC-1.1.0/app/styles/base.css "https://gitlab.com/epfl-center-for-imaging/jupyterhub-imaging/-/raw/main/jupyterhub-imaging/spawn-images/remote_desktop/base.css"
 RUN wget -O /opt/noVNC-1.1.0/app/ui.js "https://gitlab.com/epfl-center-for-imaging/jupyterhub-imaging/-/raw/main/jupyterhub-imaging/spawn-images/remote_desktop/ui.js"
 RUN wget -O /opt/noVNC-1.1.0/vnc.html "https://gitlab.com/epfl-center-for-imaging/jupyterhub-imaging/-/raw/main/jupyterhub-imaging/spawn-images/remote_desktop/vnc.html"
@@ -74,6 +75,8 @@ ENV updateCommand --update update
 RUN ${fiji} ${updateCommand} \
     && chmod -R a+rwX /opt/Fiji.app
 
+
+COPY Fiji.desktop /home/$NB_USER/Desktop/Fiji.desktop
 # Desktop icon
 RUN printf '[Desktop Entry]\nVersion=1.0\nName=ImageJ\nGenericName=ImageJ\nX-GNOME-FullName=ImageJ\nComment=Scientific Image Analysis\nType=Application\nCategories=Education;Science;ImageProcessing;\nExec=/opt/Fiji.app/ImageJ-linux64 %F\nTryExec=/opt/Fiji.app/ImageJ-linux64\nTerminal=false\nStartupNotify=true\nMimeType=image/*;\nIcon=/opt/Fiji.app/images/icon.png\nStartupWMClass=net-imagej-launcher-ClassLauncher\n' > /home/$NB_USER/Desktop/Fiji.desktop
 
