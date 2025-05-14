@@ -1,23 +1,12 @@
 # Template for Linux Desktop Apps on Binder / JupyterHub
 
-<!-- [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/yuvipanda/binder-desktop-app-template/HEAD?urlpath=desktop) -->
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/EPFL-Center-for-Imaging/fiji-binderhub/HEAD?urlpath=desktop)
 
 Generate a Git repository that can run any Linux GUI application in
 the browser via [mybinder.org](https://mybinder.org) or any JupyterHub
 from this template repository!
 
-Uses [jupyter-remote-desktop-proxy](https://github.com/jupyterhub/jupyter-remote-desktop-proxy)
-to work.
-
-## How to use this repo
-
-### 1. Create a new repo using this as a template
-
-Use the [Use this template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template#creating-a-repository-from-a-template)
-button on GitHub. Use a descriptive name representing the
-GUI app you are running / demoing. You can then follow the rest of
-the instructions in this README from your newly created repository.
+Uses [jupyter-remote-desktop-proxy](https://github.com/jupyterhub/jupyter-remote-desktop-proxy).
 
 ### 2. Install the application you want
 
@@ -67,13 +56,3 @@ The 'Launch on Binder' badge in this README points to the template repository.
 You should modify it to point to your own repository. Keep the `urlpath=desktop`
 parameter intact - that is what makes sure your repo will launch directly into
 a Linux desktop.
-
-### 5. Cleanup the README.md to document your application
-
-Finally, cleanup your README.md to document the application in your repo! Users
-of your repo want to see the application, not instructions on how to setup the repo :)
-
-## Inspiration
-
-Inspriation to make this particular template repository comes from conversation
-with my friend [Sanjay Bhangar](https://twitter.com/sanjaybhangar).

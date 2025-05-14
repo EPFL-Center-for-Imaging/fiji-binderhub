@@ -3,7 +3,7 @@ set -ex
 
 echo "Activating feature 'Fiji'"
 
-# wget -q https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
-#     && unzip fiji-linux64.zip -d /opt/ \
-#     && rm fiji-linux64.zip \
-#     && chmod -R a+rwX /opt/Fiji.app
+wget -q https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
+    && unzip fiji-linux64.zip -d /opt/ \
+    && rm fiji-linux64.zip \
+    && chmod -R a+rwX /opt/Fiji.app
