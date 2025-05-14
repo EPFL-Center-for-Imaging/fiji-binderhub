@@ -51,6 +51,6 @@ c.ServerProxy.servers = {
         "timeout": 10,
         "mappath": {"/": "/vnc.html"},
         "launcher_entry": {"enabled": True, "title": "Desktop"},
-        "new_browser_tab": True,
+        "new_browser_tab": False,
     }
 }
