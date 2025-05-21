@@ -76,6 +76,9 @@ RUN wget -q https://downloads.imagej.net/fiji/latest/fiji-latest-linux64-jdk.zip
 # RUN ${fiji} ${updateCommand} \
 #     && chmod -R a+rwX /opt/Fiji.app
 
+# Install DeconvolutionLab2
+RUN wget -O /opt/Fiji/plugins/DeconvolutionLab_2.jar "https://bigwww.epfl.ch/deconvolution/deconvolutionlab2/DeconvolutionLab_2.jar"
+
 # Desktop icon
 RUN printf '[Desktop Entry]\nVersion=1.0\nName=ImageJ\nGenericName=ImageJ\nX-GNOME-FullName=ImageJ\nComment=Scientific Image Analysis\nType=Application\nCategories=Education;Science;ImageProcessing;\nExec=/opt/Fiji/fiji-linux-x64 %F\nTryExec=/opt/Fiji/fiji-linux-x64\nTerminal=false\nStartupNotify=true\nMimeType=image/*;\nIcon=/opt/Fiji/images/icon.png\nStartupWMClass=net-imagej-launcher-ClassLauncher\n' > /home/$NB_USER/Desktop/Fiji.desktop
 
