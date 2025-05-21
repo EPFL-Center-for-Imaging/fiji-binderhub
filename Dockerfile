@@ -64,21 +64,20 @@ RUN mkdir /home/$NB_USER/Desktop && chown -R $NB_GID:$NB_GID /home/$NB_USER/Desk
 RUN mkdir /opt/.jupyter
 
 # Install Fiji
-RUN wget -q https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
-    && unzip fiji-linux64.zip -d /opt/ \
-    && rm fiji-linux64.zip \
-    && chmod -R a+rwX /opt/Fiji.app
+# RUN wget -q https://downloads.imagej.net/fiji/latest/fiji-linux64.zip \
+RUN wget -q https://downloads.imagej.net/fiji/latest/fiji-latest-linux64-jdk.zip \
+    && unzip fiji-latest-linux64-jdk.zip -d /opt/ \
+    && rm fiji-latest-linux64-jdk.zip \
+    && chmod -R a+rwX /opt/Fiji
 
-# Update sites
-ENV fiji /opt/Fiji.app/ImageJ-linux64
-ENV updateCommand --update update
-RUN ${fiji} ${updateCommand} \
-    && chmod -R a+rwX /opt/Fiji.app
+# # Update sites
+# ENV fiji /opt/Fiji.app/ImageJ-linux64
+# ENV updateCommand --update update
+# RUN ${fiji} ${updateCommand} \
+#     && chmod -R a+rwX /opt/Fiji.app
 
-
-COPY Fiji.desktop /home/$NB_USER/Desktop/Fiji.desktop
 # Desktop icon
-RUN printf '[Desktop Entry]\nVersion=1.0\nName=ImageJ\nGenericName=ImageJ\nX-GNOME-FullName=ImageJ\nComment=Scientific Image Analysis\nType=Application\nCategories=Education;Science;ImageProcessing;\nExec=/opt/Fiji.app/ImageJ-linux64 %F\nTryExec=/opt/Fiji.app/ImageJ-linux64\nTerminal=false\nStartupNotify=true\nMimeType=image/*;\nIcon=/opt/Fiji.app/images/icon.png\nStartupWMClass=net-imagej-launcher-ClassLauncher\n' > /home/$NB_USER/Desktop/Fiji.desktop
+RUN printf '[Desktop Entry]\nVersion=1.0\nName=ImageJ\nGenericName=ImageJ\nX-GNOME-FullName=ImageJ\nComment=Scientific Image Analysis\nType=Application\nCategories=Education;Science;ImageProcessing;\nExec=/opt/Fiji/fiji-linux-x64 %F\nTryExec=/opt/Fiji/fiji-linux-x64\nTerminal=false\nStartupNotify=true\nMimeType=image/*;\nIcon=/opt/Fiji/images/icon.png\nStartupWMClass=net-imagej-launcher-ClassLauncher\n' > /home/$NB_USER/Desktop/Fiji.desktop
 
 # Final chown and chmod
 RUN chown -R $NB_GID:$NB_GID /home/$NB_USER/ \
