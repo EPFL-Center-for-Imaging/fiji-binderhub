@@ -82,6 +82,14 @@ RUN wget -O /opt/Fiji/plugins/DeconvolutionLab_2.jar "https://bigwww.epfl.ch/dec
 # Desktop icon
 RUN printf '[Desktop Entry]\nVersion=1.0\nName=ImageJ\nGenericName=ImageJ\nX-GNOME-FullName=ImageJ\nComment=Scientific Image Analysis\nType=Application\nCategories=Education;Science;ImageProcessing;\nExec=/opt/Fiji/fiji-linux-x64 %F\nTryExec=/opt/Fiji/fiji-linux-x64\nTerminal=false\nStartupNotify=true\nMimeType=image/*;\nIcon=/opt/Fiji/images/icon.png\nStartupWMClass=net-imagej-launcher-ClassLauncher\n' > /home/$NB_USER/Desktop/Fiji.desktop
 
+# Copy instructions
+COPY instructions.md /home/$NB_USER/instructions.md
+COPY credits.txt /home/$NB_USER/credits.txt
+
+# Copy sample image and PSF onto the desktop
+COPY Drosophila.tif /home/$NB_USER/Desktop/Drosophila.tif
+COPY psf_drosophila.tif /home/$NB_USER/Desktop/psf_drosophila.tif
+
 # Final chown and chmod
 RUN chown -R $NB_GID:$NB_GID /home/$NB_USER/ \
     && chmod -R a+rwx /home/$NB_USER/
